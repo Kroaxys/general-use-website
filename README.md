@@ -1,2 +1,2 @@
-# general-use-website
+# General use website
 A general use website for myself
