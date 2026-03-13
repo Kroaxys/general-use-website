@@ -2,3 +2,30 @@
     font-family: oldlondon;
     src: url(assets/fonts/old_london/Olondona.otf);
 }
+@font-face {
+    font-family: ubuntu;
+    src: url(/assets/fonts/Ubuntu/Ubuntu-Regular.ttf);
+}
+@font-face {
+  font-family: Uni2-Fixed16;
+  src: url(assets/fonts/Uni2-Fixed16.woff2) format("woff2");
+}
+@font-face {
+    font-family: Uni2-Fixed16-1;
+    src: url(assets/fonts/Uni2-Fixed16.ttf) format("truetype");
+}
+@font-face {
+    font-family: terminus;
+    src: url(assets/fonts/TerminusTTF-4.49.3.ttf);
+}
+
+body {
+  font-family: "terminus", oldlondon;
+  font-size: 16px;
+  color: #fff;
+  line-height: 0px;
+}
+
+* {
+    background-color: #000;
+}
