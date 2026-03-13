@@ -1,0 +1,7 @@
+
+[
+    {"command":"ls","binding":"","info":["Shows all available options after the file path"]},
+    {"command":"cd","binding":"[path]","info":["Takes you to the specified file path","[/path1/path2/.../]"]},
+    {"command":"help","binding":"[command]","info":["Shows you helpful information about commands"]}
+    
+]

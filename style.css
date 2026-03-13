@@ -32,4 +32,5 @@ body {
 
 .generatedDiv {
   display: flex;
+  white-space: pre;
 }/*# sourceMappingURL=style.css.map */
