@@ -25,7 +25,9 @@ function addNewLine (){
     input = document.createElement("p")
     let div = document.createElement("div")
     basep.textContent="guest@kroaxys.xyz:~$"
+    div.classList.add("generatedDiv")
     content.append(div);
     div.append(basep);
     div.append(input);
+    input.scrollIntoView({ behavior:"instant", block:"start" })
 }

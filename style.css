@@ -22,9 +22,14 @@ body {
   font-family: "terminus", oldlondon;
   font-size: 16px;
   color: #fff;
-  line-height: 0px;
 }
 
 * {
   background-color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.generatedDiv {
+  display: flex;
 }/*# sourceMappingURL=style.css.map */
