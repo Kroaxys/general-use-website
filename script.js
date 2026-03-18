@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("keydown", function (event) {
 
         if (event.key.length == 1) {
-            input.textContent += event.key
+              input.textContent += event.key
         }
         else if (event.key == "Backspace") {
             input.textContent = input.textContent.slice(0, -1);
@@ -49,10 +49,14 @@ function addNewLine() {
 function checkcommand(obj) {
     console.log(obj)
 
+    //Change logic. Make it not dependent on hard coded code. Make it look in a json file to see if it exist and then execute.
+    //Make different arrays, they should include all file paths. cd array, ls array.
+    //Loop(if obj.includes arrays.main[i] then loop)
     if (obj.includes("cd")) {
 
         if (obj == "cd /tag/") {
             dir = "guest@kroaxys.xyz:/tag$"
+            addNewLine();
         }
         else if (obj == "/help/") { }
         else {
