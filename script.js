@@ -2,6 +2,12 @@ var content;
 var input;
 var dir = "guest@kroaxys.xyz:~$ ";
 var help = "";
+var commands = "";
+
+const functions = {
+    cd: cd,
+    ls: ls
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     content = document.getElementById("content")
@@ -9,10 +15,14 @@ document.addEventListener("DOMContentLoaded", function () {
     getJson();
 
     async function getJson(){
-        const response = await fetch("assets/json/help.json");
+        let response = await fetch("assets/json/help.json");
         help = await response.json();
+        response = await fetch("assets/json/commands.json")
+        commands = await response.json();
+        console.log(commands)
         console.log(help)
         console.log(help[0].command)
+        console.log(commands.length)
     }
 
     document.addEventListener("keydown", function (event) {
@@ -34,6 +44,22 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 })
 
+function cd (){
+    test();
+}
+
+function ls (){
+
+}
+
+function help (){
+
+}
+
+function test (){
+    console.log("Testing Response")
+}
+
 function addNewLine() {
     let basep = document.createElement("p")
     input = document.createElement("p")
@@ -48,38 +74,61 @@ function addNewLine() {
 
 function checkcommand(obj) {
     console.log(obj)
+    let i = 0;
 
     //Change logic. Make it not dependent on hard coded code. Make it look in a json file to see if it exist and then execute.
     //Make different arrays, they should include all file paths. cd array, ls array.
     //Loop(if obj.includes arrays.main[i] then loop)
-    if (obj.includes("cd")) {
 
-        if (obj == "cd /tag/") {
-            dir = "guest@kroaxys.xyz:/tag$"
-            addNewLine();
+    //start with
+
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors
+
+    // if(obj.includes(array.commands[i])) {
+    //    if(obj.includes(array.commands[i].subcommand[n])){
+
+    //    }
+    // }
+
+    
+    while (i<commands.length) {
+        console.log("WhileLoop")
+        if (obj.startsWith(commands[i].command)){
+            functions[commands[i].command]()
         }
-        else if (obj == "/help/") { }
-        else {
-            addNewLine();
-        }
+        i++;
     }
 
-    else if (obj.includes("ls")) {
-        if (obj == "ls /tag/") { }
-    }
+    // if (obj.includes("cd")) {
 
-    else if (obj.includes("help")){
-        if (obj == "help") {
-            commandoutput("help")
-            addNewLine();
-        }
+    //     if (obj == "cd /tag/") {
+    //         let test = "cd"
+    //         dir = "guest@kroaxys.xyz:/tag$"
+    //         addNewLine();
+    //         functions[test]()
+    //     }
+    //     else {
+    //         addNewLine();
+    //         console.log("Error")
+    //     }
+    // }
+
+    // else if (obj.includes("ls")) {
+    //     if (obj == "ls /tag/") { }
+    // }
+
+    // else if (obj.includes("help")){
+    //     if (obj == "help") {
+    //         commandoutput("help")
+    //         addNewLine();
+    //     }
         
-        else if (obj == "") {}
-    }
+    //     else if (obj == "") {}
+    // }
 
-    else {
-        addNewLine();
-    }
+    // else {
+    //     addNewLine();
+    // }
 }
 
 function commandoutput(obj) {

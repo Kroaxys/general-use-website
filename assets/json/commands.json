@@ -1,0 +1,17 @@
+[
+    {
+        "command": "cd",
+        "subcommand": []
+    },
+    {
+        "command": "ls",
+        "subcommand":[]
+    },
+    {
+        "command": "help",
+        "subcommand": []
+    }
+
+
+
+]
