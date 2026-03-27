@@ -1,12 +1,16 @@
 var content;
 var input;
+const basedir = "guest@kroaxys.xyz:";
 var dir = "guest@kroaxys.xyz:~$ ";
-var help = "";
-var commands = "";
+var helpJSON = "";
+var commandsJSON = "";
+var dsJSON = "";
 
 const functions = {
     cd: cd,
-    ls: ls
+    ls: ls,
+    help: help,
+    nano: nano
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -16,13 +20,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function getJson(){
         let response = await fetch("assets/json/help.json");
-        help = await response.json();
+        helpJSON = await response.json();
         response = await fetch("assets/json/commands.json")
-        commands = await response.json();
-        console.log(commands)
-        console.log(help)
-        console.log(help[0].command)
-        console.log(commands.length)
+        commandsJSON = await response.json();
+        response = await fetch("assets/json/DirectoryStructure.json")
+        dsJSON = await response.json();
+        console.log(commandsJSON)
+        console.log(helpJSON)
+        console.log(dsJSON)
+        console.log(helpJSON[0].command)
+        console.log(commandsJSON.length)
     }
 
     document.addEventListener("keydown", function (event) {
@@ -44,8 +51,23 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 })
 
-function cd (){
+function cd (obj){
     test();
+    console.log(obj)
+    let valid
+
+    if (obj.charAt(0)== "/" && obj.charAt(obj.length-1) == "/")
+    {
+        obj = obj.slice(1,obj.length-1)
+        valid = true
+    }
+    
+    if (valid == true) {
+        obj = obj.split("/")
+        console.log(obj)
+    }
+    
+
 }
 
 function ls (){
@@ -56,7 +78,11 @@ function help (){
 
 }
 
-function test (){
+function nano (){
+
+}
+
+function test (obj){
     console.log("Testing Response")
 }
 
@@ -64,7 +90,7 @@ function addNewLine() {
     let basep = document.createElement("p")
     input = document.createElement("p")
     let div = document.createElement("div")
-    basep.textContent = dir
+    basep.textContent = dir + " "
     div.classList.add("generatedDiv")
     content.append(div);
     div.append(basep);
@@ -91,10 +117,13 @@ function checkcommand(obj) {
     // }
 
     
-    while (i<commands.length) {
+    while (i<commandsJSON.length) {
         console.log("WhileLoop")
-        if (obj.startsWith(commands[i].command)){
-            functions[commands[i].command]()
+        if (obj.startsWith(commandsJSON[i].command+" ")){
+            let fullcommand = commandsJSON[i].command+" "
+            let remainingString = obj.slice(fullcommand.length)
+
+            functions[commandsJSON[i].command](remainingString)
         }
         i++;
     }
@@ -133,10 +162,10 @@ function checkcommand(obj) {
 
 function commandoutput(obj) {
     if (obj == "help"){
-        for (let i = 0; i < help.length; i++){
+        for (let i = 0; i < helpJSON.length; i++){
             //let div = document.createElement("div")
             let p = document.createElement("p")
-            p.textContent = help[i].command + "," + help[i].binding
+            p.textContent = helpJSON[i].command + "," + helpJSON[i].binding
             content.append(p)
         }
     }
