@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         dsJSON = await response.json();
         console.log(commandsJSON)
         console.log(helpJSON)
+        console.log(dsJSON.length)
         console.log(dsJSON)
         console.log(helpJSON[0].command)
         console.log(commandsJSON.length)
@@ -55,6 +56,8 @@ function cd (obj){
     test();
     console.log(obj)
     let valid
+    let i = 0;
+    let z = 0;
 
     if (obj.charAt(0)== "/" && obj.charAt(obj.length-1) == "/")
     {
@@ -65,8 +68,27 @@ function cd (obj){
     if (valid == true) {
         obj = obj.split("/")
         console.log(obj)
+        console.log(obj.length)
     }
     
+    
+    while (i<dsJSON.length && z<obj.length){
+        console.log(obj[i]+","+dsJSON[i].first)
+        if (obj[i] === dsJSON[i].first){
+            objectKeys = Object.keys(dsJSON[i])
+            console.log(objectKeys)
+            console.log("////")
+            console.log(dsJSON[i][objectKeys])
+            console.log("////")
+            console.log(dsJSON[i][objectKeys[1]])
+            let x = 0;
+            
+            //while (x<dsJSON[i][objectKeys[z]])
+
+
+        }
+        i++
+    }
 
 }
 
