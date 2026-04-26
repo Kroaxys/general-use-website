@@ -1,8 +1,9 @@
 [
     {
         "first":"tag",
-        "second":["test","test2"]
+        "second":{
+            "tech":["the new cars"],
+            "projects":["blogg"]
+        }
     }
-
-
 ]

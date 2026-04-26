@@ -58,6 +58,9 @@ function cd (obj){
     let valid
     let i = 0;
     let z = 0;
+    let arrayint = 0;
+    const dircomponents = [];
+    let finaldir;
 
     if (obj.charAt(0)== "/" && obj.charAt(obj.length-1) == "/")
     {
@@ -73,17 +76,30 @@ function cd (obj){
     
     
     while (i<dsJSON.length && z<obj.length){
-        console.log(obj[i]+","+dsJSON[i].first)
-        if (obj[i] === dsJSON[i].first){
+        console.log(obj[z]+","+dsJSON[i].first)
+        console.log(dsJSON.length)
+        if (obj[z] === dsJSON[i].first){
+            z++
+            //dircomponents[arrayint] = obj[i];
+            //arrayint++
             objectKeys = Object.keys(dsJSON[i])
             console.log(objectKeys)
             console.log("////")
             console.log(dsJSON[i][objectKeys])
             console.log("////")
             console.log(dsJSON[i][objectKeys[1]])
+            console.log(dsJSON[i][objectKeys[1]].length)
             let x = 0;
-            
+            //console.log(dircomponents);
             //while (x<dsJSON[i][objectKeys[z]])
+            if (z<obj.length){
+                while (x<dsJSON[i][objectKeys[z]].length){
+                    if (obj[z] === dsJSON[i][objectKeys[z]]) {
+
+                    }
+                }
+            }
+            else {break}
 
 
         }
